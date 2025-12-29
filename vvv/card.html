@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <title>Velvet Vogue | Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo" style="color:#d63384;">Velvet Vogue</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="card.html">Card</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+        <div class="cart-btn">Cart (2)</div>
+    </nav>
+
+    <div class="shop-container" style="justify-content: center;">
+        <div class="sidebar" style="flex: 0 0 70%; padding: 30px;">
+            <div id="cartItems">
+                <div style="display:flex; align-items:center; gap:20px; border-bottom:1px solid #eee; padding-bottom:20px;">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500" style="width:100px; border-radius:10px;">
+                    <div style="flex:1;">
+                        <h3>Denim Jacket</h3>
+                        <p>LKR 6,840 x 2</p>
+                    </div>
+                    <input type="number" value="2" style="width:50px; padding:5px; border: 2px solid #2b6cb0;"> <button class="clear-btn" style="border: 2px solid #ecc94b; color:#333;">Remove</button> </div>
+            </div>
+
+            <div style="margin-top:20px; line-height: 2;">
+                <p>Subtotal: LKR 13,680</p>
+                <p style="color:#2ecc71; border:1px solid #2ecc71; display:inline-block; padding:0 5px;">Discount: LKR 684</p>
+                <h3>Total: LKR 12,996</h3>
+                <button onclick="openPayment()" class="shop-btn" style="border-radius: 20px; padding: 10px 40px; border: 2px solid #553c9a;">Checkout</button> </div>
+            
+            <p style="text-align:center; color:gray; font-size:12px; margin-top:40px;">
+                © Velvet Vogue.
+            </p>
+        </div>
+    </div>
+
+    <div id="payModal" class="modal">
+        <div class="modal-content" style="border: 3px solid #f68537; max-width: 600px;"> <h3>Payment (Demo)</h3>
+            <p style="margin-bottom:15px;">Total: LKR 12,996</p>
+            
+            <input type="text" placeholder="Cardholder name" style="width:100%; margin-bottom:10px; padding:10px; border:1px solid #ddd;">
+            <input type="text" placeholder="Card number" style="width:100%; margin-bottom:10px; padding:10px; border:1px solid #ddd;">
+            <div style="display:flex; gap:10px; margin-bottom:10px;">
+                <input type="text" placeholder="MM/YY" style="flex:1; padding:10px; border:1px solid #ddd;">
+                <input type="text" placeholder="CVV" style="flex:1; padding:10px; border:1px solid #ddd;">
+            </div>
+            
+            <button class="shop-btn" style="width:auto; border-radius:10px;">Pay LKR 12,996</button>
+            <button onclick="closePayment()" class="clear-btn" style="float:right;">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openPayment() { document.getElementById('payModal').style.display = 'block'; }
+        function closePayment() { document.getElementById('payModal').style.display = 'none'; }
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <title>Velvet Vogue | Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Velvet Vogue</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="card.html">Card</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
+        <div class="cart-btn">Cart (0)</div>
+    </nav>
+
+    <div class="shop-container">
+        <aside class="sidebar">
+            <h3>Filters</h3>
+            <div class="filter-group">
+                <label>Gender</label>
+                <select><option>Any</option></select>
+            </div>
+            <div class="filter-group">
+                <label>Type</label>
+                <select><option>Any</option></select>
+            </div>
+            <div class="filter-group">
+                <label>Size</label>
+                <select><option>Any</option></select>
+            </div>
+            <div class="filter-group">
+                <label>Max Price (LKR)</label>
+                <input type="range" min="0" max="50000" value="50000">
+                <p>Up to LKR 50,000</p>
+            </div>
+            <button class="apply-btn" style="background:#d63384; color:white; border:none; padding:10px; width:100%; cursor:pointer;">Apply</button>
+            <button class="clear-btn" style="width:100%; margin-top:5px; padding:10px;">Clear</button>
+        </aside>
+
+        <main class="products-grid" id="productContainer"></main>
+    </div>
+
+    <div id="pModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div style="display:flex; gap:30px;">
+                <img id="mImg" src="" style="width:35%; border-radius:10px; border: 2px solid #5e35b1;">
+                <div style="flex:1;">
+                    <h2 id="mTitle"></h2>
+                    <p id="mCat" style="color:gray;"></p>
+                    <p id="mPrice" class="price-tag"></p>
+                    
+                    <div style="margin:15px 0;">
+                        <label style="display:block; border: 1px solid #4caf50; padding:5px; margin-bottom:5px;">Size</label> <select style="width:100%; padding:8px;"><option>S</option><option>M</option><option>L</option></select>
+                        
+                        <label style="display:block; border: 1px solid #ff9800; padding:5px; margin:10px 0 5px 0;">Color</label> <select style="width:100%; padding:8px;"><option>Blue</option><option>Black</option></select>
+                    </div>
+                    
+                    <div style="display:flex; gap:10px; border: 1px solid #2b6cb0; padding:10px;"> <input type="number" value="1" style="width:50px; padding:5px;">
+                        <button class="shop-btn" style="margin:0; flex:1;">Add to cart</button>
+                    </div>
+
+                    <div style="margin-top:20px; border-top:1px solid #eee; padding-top:15px;">
+                        <h4>Leave feedback</h4>
+                        <input type="text" placeholder="janith ravihansa" style="width:100%; margin:5px 0; padding:8px;">
+                        <select style="width:100%; margin-bottom:5px; padding:8px;"><option>Rating: 5</option></select>
+                        <textarea placeholder="Share your thoughts" style="width:100%; height:60px; padding:8px;"></textarea>
+                        <button class="shop-btn" style="width:100%; margin-top:5px;">Submit feedback</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { name: "Denim Jacket", price: "7,600", off: "10%", cat: "Unisex • Shirt", img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500" },
+            { name: "Cozy Knit Sweater", price: "3,500", off: "5%", cat: "Female • Jacket", img: "https://images.unsplash.com/photo-1631541909061-71e349d1f203?w=500" },
+            { name: "Slim Fit Jeans", price: "4,200", off: "10%", cat: "Male • Jeans", img: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=500" },
+            { name: "Summer Floral Dress", price: "5,800", off: "15%", cat: "Female • Dress", img: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500" },
+            { name: "Casual T-Shirt", price: "1,900", off: "20%", cat: "Unisex • Shirt", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" }
+        ];
+
+        const container = document.getElementById('productContainer');
+        products.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${p.img}" style="border: 3px solid #5e35b1;"> <h4 style="border: 1px solid #ff9800; padding:2px 5px; display:inline-block;">${p.name}</h4> <p style="font-size:12px; color:gray; margin-top:5px;">${p.cat}</p>
+                <p class="price-tag" style="border: 1px solid #4caf50; padding:2px 5px;">LKR ${p.price} • ${p.off}</p> <div style="margin-top:10px; display:flex; gap:5px;">
+                    <button onclick="openModal('${p.name}', '${p.price}', '${p.img}', '${p.cat}')" class="shop-btn" style="padding:5px 10px; font-size:12px;">View</button>
+                    <button class="shop-btn" style="padding:5px 10px; font-size:12px; background:#666;">Add</button>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        function openModal(n, p, i, c) {
+            document.getElementById("mTitle").innerText = n;
+            document.getElementById("mPrice").innerText = "LKR " + p;
+            document.getElementById("mImg").src = i;
+            document.getElementById("mCat").innerText = c;
+            document.getElementById("pModal").style.display = "block";
+        }
+        function closeModal() { document.getElementById("pModal").style.display = "none"; }
+    </script>
+</body>
+</html>
