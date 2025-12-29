@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <title>Velvet Vogue | Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo" style="color:#d63384;">Velvet Vogue</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Shop</a></li>
+            <li><a href="card.html">card</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="admin.html" style="background:#eee; padding:5px 10px; border-radius:5px;">Admin</a></li>
+        </ul>
+        <div class="cart-btn">Cart (2)</div>
+    </nav>
+
+    <div class="shop-container" style="flex-direction: column; align-items: center; gap: 30px;">
+        
+        <div style="display:flex; gap:20px; width:90%; justify-content: center;">
+            <div class="sidebar" style="flex:1; padding:25px;">
+                <h3>Admin Login</h3><br>
+                <input type="email" placeholder="Email" value="janithravihansa532@gmail.com" style="width:100%; margin-bottom:10px; padding:10px; border:1px solid #eee;">
+                <input type="password" placeholder="Password" style="width:100%; margin-bottom:15px; padding:10px; border:1px solid #eee;">
+                <button class="shop-btn" onclick="alert('Admin logged in')" style="margin:0;">Login</button>
+            </div>
+            <div class="sidebar" style="flex:1; padding:25px;">
+                <h3>Admin Register</h3><br>
+                <input type="text" placeholder="Admin name" style="width:100%; margin-bottom:10px; padding:10px; border:1px solid #eee;">
+                <input type="email" placeholder="Email" style="width:100%; margin-bottom:10px; padding:10px; border:1px solid #eee;">
+                <input type="password" placeholder="Password" style="width:100%; margin-bottom:15px; padding:10px; border:1px solid #eee;">
+                <button class="shop-btn" style="margin:0; background:#d63384;">Register</button>
+            </div>
+        </div>
+
+        <div class="sidebar" style="width:90%; padding:30px;">
+            <h3>Add Product (you can upload a photo)</h3><br>
+            <form style="display: flex; flex-direction: column; gap: 10px;">
+                <input type="text" placeholder="Title" style="padding:10px; border:1px solid #eee;">
+                <input type="text" placeholder="Price (LKR)" style="padding:10px; border:1px solid #eee;">
+                <input type="text" placeholder="Image URL (optional)" style="padding:10px; border:1px solid #eee;">
+                <div style="border:1px solid #eee; padding:10px; border-radius:5px;">
+                    <label>Or upload image file (jpg/png)</label><br>
+                    <input type="file" style="margin-top:5px;">
+                </div>
+                <input type="text" placeholder="Gender (male/female/unisex)" style="padding:10px; border:1px solid #eee;">
+                <input type="text" placeholder="Type (tshirt/shirt/dress/jeans/jacket)" style="padding:10px; border:1px solid #eee;">
+                <input type="text" placeholder="Sizes comma separated e.g. S,M,L" style="padding:10px; border:1px solid #eee;">
+                <input type="text" placeholder="Colors comma separated" style="padding:10px; border:1px solid #eee;">
+                <input type="text" placeholder="Discount %" style="padding:10px; border:1px solid #eee;">
+                <textarea placeholder="Short description" style="padding:10px; border:1px solid #eee; height:80px;"></textarea>
+                <button class="shop-btn" style="width:fit-content;">Add Product</button>
+            </form>
+        </div>
+
+        <div class="sidebar" style="width:90%; padding:30px;">
+            <h3>Manage Products & Feedback</h3><br>
+            <div id="manageList">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding:15px 0;">
+                    <div>
+                        <strong>Denim Jacket</strong><br>
+                        <small>LKR 7,600 • 10% off</small><br>
+                        <small style="color:gray;">Feedback (0): No feedback</small>
+                    </div>
+                    <button class="clear-btn" style="padding:5px 15px; font-size:12px; border-radius:5px; background:#eee; border:none;">Remove product</button>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding:15px 0;">
+                    <div>
+                        <strong>Cozy Knit Sweater</strong><br>
+                        <small>LKR 3,500 • 5% off</small><br>
+                        <small style="color:gray;">Feedback (0): No feedback</small>
+                    </div>
+                    <button class="clear-btn" style="padding:5px 15px; font-size:12px; border-radius:5px; background:#eee; border:none;">Remove product</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <p style="text-align:center; color:gray; font-size:12px; margin-top:50px; padding-bottom:30px;">
+        © Velvet Vogue .
+    </p>
+</body>
+</html>
